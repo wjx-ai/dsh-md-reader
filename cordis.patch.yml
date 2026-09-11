@@ -1,0 +1,9 @@
+# dsh-md-reader bundle patch：由 `dsh plugin --profile web add ...` 自动合并到 profile 层栈。
+#
+# 以双半身 bundle 形式插入：lib/index.js 是宿主插件（注册 /api/md-reader/* 只读
+# 路由），package.json 的 dsh.client 声明让模块扫描器把 lib/client.js 提供给浏览器。
+# 手动安装（复制目录 + install.ps1）请改用相对路径 name：
+#   ./plugins/dsh-md-reader/lib/index.js
+- insert:
+    - id: md-reader
+      name: 'dsh-md-reader'
