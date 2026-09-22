@@ -21,6 +21,9 @@
 - **图片内联预览**：png / jpg / jpeg / gif / webp / avif / bmp / ico / svg 点击即在
   栏内居中展示（data URL 内联，SVG 在 `<img>` 中不执行脚本）；宿主半身不支持图片
   时自动回退系统打开，不会报错。
+- **HTML 直接阅读**：`.html` / `.htm` 文件直接在面板内以 `iframe[allow-same-origin]`
+  渲染（样式/图片正常加载，脚本被 sandbox 拦截，安全可读）；同一目录下的
+  Markdown 文件若内嵌 `<p><img><a><b>` 等 HTML 也会被原样渲染。
 - **复制原文**（⧉）、**字号缩放**（A- / A+，70%–150% 持久化）、**重新读取**（⟳）、
   **历史前进/后退**（‹ ›）、**Esc 关闭**。
 - **正文内导航**：正文 inline-code 记号若匹配「当前文档同级的 Markdown 文件」或
@@ -134,6 +137,9 @@ GET /api/md-reader/list?dir=<目录>
 
 ## 版本记录
 
+- **1.2.4** 新增 HTML 支持：`.html` / `.htm` 文件直接在面板内以沙箱 iframe（
+  `allow-same-origin`，脚本拦截）渲染；同目录下 Markdown 正文里的 `<p><img><a>`
+  等内联 HTML 继续原样保留。
 - **1.2.3** 代码块排版：面板内代码块不再折行（`white-space: pre` + 横向滚动，
   ASCII 框线图不再被打散），代码字体改用中文等宽栈（`NSimSun`，ASCII 恰为
   汉字半宽，框线图列对齐精确）；README 首屏布局示意从 ASCII 框线图改为
